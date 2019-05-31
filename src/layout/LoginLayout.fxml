@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.LoginController">
+   <children>
+      <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #0C39FF;">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="84.0" layoutX="153.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/coinspot.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="105.0" layoutY="262.0" prefHeight="23.0" prefWidth="173.0" text="Easy Coin Control" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="89.0" layoutY="295.0" prefHeight="23.0" prefWidth="205.0" text="Create manage your Coin easily" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Label>
+      <Pane layoutX="467.0" layoutY="172.0" prefWidth="334.0">
+         <children>
+            <TextField fx:id="txtId" layoutX="30.0" layoutY="14.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
+            <PasswordField fx:id="txtPass" layoutX="30.0" layoutY="63.0" onKeyPressed="#onKeyPress" prefHeight="34.0" prefWidth="275.0" promptText="password" stylesheets="@../styling/fullpackstyling.css" />
+            <Button fx:id="btnLogin" layoutX="170.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleBtnLogin" onKeyPressed="#onKeyPress" prefHeight="34.0" prefWidth="137.0" stylesheets="@../styling/fullpackstyling.css" text="Sign in" />
+            <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="95.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Button layoutX="28.0" layoutY="128.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="404.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/img_311846.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="501.0" layoutY="123.0" prefHeight="49.0" prefWidth="223.0" text="LOGIN">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

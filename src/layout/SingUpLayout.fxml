@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.SingUpController">
+   <children>
+      <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #0C39FF;">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="84.0" layoutX="153.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/coinspot.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="105.0" layoutY="262.0" prefHeight="23.0" prefWidth="173.0" text="Wellcom to Coin" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="89.0" layoutY="295.0" prefHeight="23.0" prefWidth="205.0" text="Create manage your Coin easily" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Label>
+      <Pane layoutX="474.0" layoutY="163.0" prefHeight="287.0" prefWidth="334.0">
+         <children>
+            <TextField fx:id="txtId" layoutX="30.0" layoutY="59.0" prefHeight="34.0" prefWidth="275.0" promptText="userID" />
+            <Button layoutX="30.0" layoutY="157.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="275.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
+            <TextField fx:id="txtpass" layoutX="30.0" layoutY="107.0" prefHeight="34.0" prefWidth="275.0" promptText="password" />
+            <TextField fx:id="name" layoutX="30.0" layoutY="14.0" prefHeight="34.0" prefWidth="275.0" promptText="username" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="404.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/img_311846.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="513.0" layoutY="114.0" prefHeight="49.0" prefWidth="223.0" text="SING UP">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
