@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.MainController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #FFF;">
+         <children>
+            <Pane prefHeight="503.0" prefWidth="157.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="53.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/icons8_Google_Wallet_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="7.0" prefWidth="139.0" text="Coin Center" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="22.0" layoutY="127.0" prefHeight="23.0" prefWidth="114.0" text="Home/OnBoard User" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="home" fitHeight="63.0" fitWidth="65.0" layoutX="47.0" layoutY="173.0" onMouseClicked="#handleBtnLogout" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/spacefm_103907.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="lblTitle" layoutX="186.0" layoutY="23.0" prefHeight="32.0" prefWidth="621.0" text="Status :" />
+            <ListView fx:id="lstCoin" layoutX="186.0" layoutY="67.0" onMouseClicked="#openData" prefHeight="392.0" prefWidth="621.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

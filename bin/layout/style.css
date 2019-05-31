@@ -1,0 +1,8 @@
+.Flu {
+	-fx-background-color: #fff;
+	-fx-background-radius: 5;
+}
+
+.btn:focus {
+	-fx-outline: none;
+}

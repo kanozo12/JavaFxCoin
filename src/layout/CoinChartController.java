@@ -1,5 +1,6 @@
 ﻿package layout;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,7 +49,11 @@ public class CoinChartController {
 	private Label coinTrad;
 	@FXML
 	private Label coinFlu;
-
+	@FXML
+	private Label coinMax;
+	@FXML
+	private Label coinMin;
+	
 	private APILoader loader;
 
 	private CoinData coinData;
@@ -81,10 +86,10 @@ public class CoinChartController {
 		coinNameMap.put("ZRX", "0x");
 		coinNameMap.put("BCD", "bitcoin-diamond");
 		coinNameMap.put("AE", "aeternity");
-		coinNameMap.put("BCHSV", "bitcoin-cash-sv"); // BSV
+		coinNameMap.put("HSV", "bitcoin-sv"); // BSV
 		coinNameMap.put("BCH", "bitcoin-cash");
-		coinNameMap.put("HC", "hypercash"); // HSR
-		coinNameMap.put("BHPC", "bhpcash");
+		coinNameMap.put("HC", "hypercash");
+		coinNameMap.put("BHPC", "bhp-coin");
 		coinNameMap.put("OMG", "omisego");
 		coinNameMap.put("TRUE", "truechain");
 		coinNameMap.put("CMT", "comet");
@@ -95,7 +100,7 @@ public class CoinChartController {
 		coinNameMap.put("LTC", "litecoin");
 		coinNameMap.put("STRAT", "stratis");
 		coinNameMap.put("POWR", "power-ledger");
-		coinNameMap.put("THETA", "theta-token");
+		coinNameMap.put("THETA", "theta");
 		coinNameMap.put("ENJ", "enjin-coin");
 		coinNameMap.put("KNC", "kingn-coin");
 		coinNameMap.put("GNT", "golem-network-tokens");
@@ -127,44 +132,58 @@ public class CoinChartController {
 		coinNameMap.put("ELF", "aelf");
 		coinNameMap.put("ADA", "cardano");
 		coinNameMap.put("ICX", "icon");
+
 	}
 
 	public void btn(ActionEvent event) {
 		loader = APILoader.getLoader();
 
-		coinData = loader.getCoinData(this.selectedCoinName);
-		coinName.setText(coinData.getCoinname().toString());
-		coinPrice.setText(coinData.getOpening_price().toString() + " 원");
-		coinAvg.setText(coinData.getAverage_price().toString() + "원");
-		coinTrad.setText(coinData.getUnits_traded().toString() + "원");
+		Date today = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
-		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-		lineChart.getData().clear();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(today);
+		cal.add(Calendar.MONTH, -2);
+		
+		DecimalFormat intformat = new DecimalFormat("###,###");
+		DecimalFormat doubleformat = new DecimalFormat("###,###.00");
+		
+		coinData = loader.getCoinData(this.selectedCoinName);
+		
+		coinName.setText(coinData.getCoinname().toString());
+		
+		if (coinData.getFluctate_24H() >= 0) {
+			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
+			coinFlu.setStyle("-fx-background-color: #f75467;");
+			coinFlu.setText("+" + coinData.getFluctate_24H() + "%");
+			
+			coinPrice.setTextFill(javafx.scene.paint.Color.RED);
+			coinPrice.setText(intformat.format(coinData.getClosing_price()));
+		} else {
+			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
+			coinFlu.setStyle("-fx-background-color: #4386f9;");
+			coinFlu.setText(coinData.getFluctate_24H() + "%");
+			
+			coinPrice.setTextFill(javafx.scene.paint.Color.BLUE);
+			coinPrice.setText(intformat.format(coinData.getClosing_price()));
+		}
+
+		coinMax.setText(coinData.getMax_price() + "");
+		coinMin.setText(coinData.getMin_price() + "");
+		
+		coinTrad.setText(String.format("%,.4f", coinData.getUnits_traded()) + "");
 
 		try {
-			String today = null;
-			String addDay = null;
-			Date date = new Date();
-
-			SimpleDateFormat sdformat = new SimpleDateFormat("yyyyMMdd");
-
-			Calendar cal = Calendar.getInstance();
-			Calendar cal2 = Calendar.getInstance();
-			cal.setTime(date);
-			cal2.setTime(date);
-
-			cal.add(Calendar.DATE, -30);
-			today = sdformat.format(cal2.getTime());
-			addDay = sdformat.format(cal.getTime());
-			System.out.println(today);
-			System.out.println(addDay);
+			XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 
 			String coinName = coinNameMap.get(this.selectedCoinName);
 			Document doc = Jsoup.connect("https://coinmarketcap.com/ko/currencies/" + coinName
-					+ "/historical-data/?start=" + addDay + "&end=" + today).get();
+					+ "/historical-data/?start=" + sdf.format(today) + "&end=" + cal).get();
 			Elements trList = doc.select("#historical-data tbody tr");
 
-			List<CoinPriceVO> coinPriceList = new ArrayList<>();
+			List<CoinPriceVO> coinPriceList = new ArrayList<CoinPriceVO>();
+
+			lineChart.getData().clear();
 
 			for (Element tr : trList) {
 				Elements tdList = tr.select("td");
@@ -181,12 +200,11 @@ public class CoinChartController {
 				CoinPriceVO item = coinPriceList.get(i);
 				series.getData().add(new XYChart.Data<String, Number>(item.getDay(), item.getPrice()));
 			}
-
 			lineChart.getData().add(series);
 
 		} catch (Exception e) {
-			System.out.println("차트 생성중 오류 발생");
 			e.printStackTrace();
+			System.out.println("ChartLoad Error");
 		}
 
 	}
@@ -205,7 +223,7 @@ public class CoinChartController {
 			timeline.play();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("화면 전환중 오류 발생");
+			System.out.println("SceneChange Error");
 		}
 	}
 }

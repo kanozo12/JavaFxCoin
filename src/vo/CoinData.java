@@ -6,7 +6,35 @@ public class CoinData {
 	private Double average_price;
 	private Double units_traded;
 	private Double fluctate_24H;
+	private Double closing_price;
+	private Double min_price;
+	private Double max_price;
 	
+	
+	public Double getMin_price() {
+		return min_price;
+	}
+
+	public void setMin_price(Double min_price) {
+		this.min_price = min_price;
+	}
+
+	public Double getMax_price() {
+		return max_price;
+	}
+
+	public void setMax_price(Double max_price) {
+		this.max_price = max_price;
+	}
+
+	public Double getClosing_price() {
+		return closing_price;
+	}
+
+	public void setClosing_price(Double closing_price) {
+		this.closing_price = closing_price;
+	}
+
 	public Double getFluctate_24H() {
 		return fluctate_24H;
 	}
