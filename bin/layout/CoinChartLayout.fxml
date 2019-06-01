@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#closeChart" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.CoinChartController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="503.0" minWidth="854.0" onMouseClicked="#closeChart" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.CoinChartController">
    <children>
       <VBox layoutY="129.0" prefHeight="374.0" prefWidth="854.0">
          <children>
@@ -31,7 +31,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="coinMax" alignment="CENTER_RIGHT" layoutX="504.0" layoutY="62.0" prefHeight="23.0" prefWidth="165.0" text="max">
+            <Label fx:id="coinMax" alignment="CENTER_RIGHT" layoutX="478.0" layoutY="48.0" prefHeight="23.0" prefWidth="165.0" text="max">
                <font>
                   <Font size="15.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="coinTrad" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="38.0" prefHeight="23.0" prefWidth="253.0" text="Traded ">
+            <Label fx:id="coinTrad" alignment="CENTER_RIGHT" layoutX="394.0" layoutY="24.0" prefHeight="23.0" prefWidth="253.0" text="Traded ">
                <font>
                   <Font size="15.0" />
                </font>
@@ -51,28 +51,28 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="753.0" layoutY="22.0" mnemonicParsing="false" onAction="#btn" prefHeight="47.0" prefWidth="76.0" styleClass="btn" stylesheets="@style.css" text="ChartLoad" />
+            <Button layoutX="733.0" layoutY="36.0" mnemonicParsing="false" onAction="#btn" prefHeight="47.0" prefWidth="76.0" styleClass="btn" stylesheets="@style.css" text="ChartLoad" />
             <Label fx:id="coinName" alignment="CENTER" layoutX="84.0" layoutY="21.0" prefHeight="38.0" prefWidth="76.0" text="Name">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="334.0" layoutY="39.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="거래량(24H)">
+            <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="25.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="거래량(24H)">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="coinMin" alignment="CENTER_RIGHT" layoutX="504.0" layoutY="85.0" prefHeight="23.0" prefWidth="165.0" text="min">
+            <Label fx:id="coinMin" alignment="CENTER_RIGHT" layoutX="478.0" layoutY="71.0" prefHeight="23.0" prefWidth="165.0" text="min">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="334.0" layoutY="63.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="24시간 고가">
+            <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="49.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="24시간 고가">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="334.0" layoutY="86.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="24시간 저가">
+            <Label alignment="CENTER_RIGHT" layoutX="308.0" layoutY="72.0" opacity="0.43" prefHeight="21.0" prefWidth="127.0" styleClass="Trad" stylesheets="@style.css" text="24시간 저가">
                <font>
                   <Font size="13.0" />
                </font>

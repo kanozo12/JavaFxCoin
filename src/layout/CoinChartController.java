@@ -44,8 +44,6 @@ public class CoinChartController {
 	@FXML
 	private Label coinPrice;
 	@FXML
-	private Label coinAvg;
-	@FXML
 	private Label coinTrad;
 	@FXML
 	private Label coinFlu;
@@ -53,7 +51,7 @@ public class CoinChartController {
 	private Label coinMax;
 	@FXML
 	private Label coinMin;
-	
+
 	private APILoader loader;
 
 	private CoinData coinData;
@@ -132,7 +130,6 @@ public class CoinChartController {
 		coinNameMap.put("ELF", "aelf");
 		coinNameMap.put("ADA", "cardano");
 		coinNameMap.put("ICX", "icon");
-
 	}
 
 	public void btn(ActionEvent event) {
@@ -144,33 +141,32 @@ public class CoinChartController {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);
 		cal.add(Calendar.MONTH, -2);
-		
+
 		DecimalFormat intformat = new DecimalFormat("###,###");
-		DecimalFormat doubleformat = new DecimalFormat("###,###.00");
-		
+
 		coinData = loader.getCoinData(this.selectedCoinName);
-		
+
 		coinName.setText(coinData.getCoinname().toString());
-		
+
 		if (coinData.getFluctate_24H() >= 0) {
 			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
 			coinFlu.setStyle("-fx-background-color: #f75467;");
 			coinFlu.setText("+" + coinData.getFluctate_24H() + "%");
-			
+
 			coinPrice.setTextFill(javafx.scene.paint.Color.RED);
 			coinPrice.setText(intformat.format(coinData.getClosing_price()));
 		} else {
 			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
 			coinFlu.setStyle("-fx-background-color: #4386f9;");
 			coinFlu.setText(coinData.getFluctate_24H() + "%");
-			
+
 			coinPrice.setTextFill(javafx.scene.paint.Color.BLUE);
 			coinPrice.setText(intformat.format(coinData.getClosing_price()));
 		}
 
 		coinMax.setText(coinData.getMax_price() + "");
 		coinMin.setText(coinData.getMin_price() + "");
-		
+
 		coinTrad.setText(String.format("%,.4f", coinData.getUnits_traded()) + "");
 
 		try {
@@ -200,6 +196,7 @@ public class CoinChartController {
 				CoinPriceVO item = coinPriceList.get(i);
 				series.getData().add(new XYChart.Data<String, Number>(item.getDay(), item.getPrice()));
 			}
+
 			lineChart.getData().add(series);
 
 		} catch (Exception e) {

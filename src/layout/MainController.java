@@ -46,7 +46,7 @@ public class MainController {
 	public void init() {
 		loader = APILoader.getLoader();
 		try {
-			
+
 			loader.init();
 
 			Map<String, CoinData> coinMap = loader.getCoinMap();
@@ -100,9 +100,9 @@ public class MainController {
 	}
 
 	public void handleBtnLogout() {
+		StackPane mainPage = (StackPane) home.getScene().getRoot();
 
 		try {
-			StackPane mainPage = (StackPane) home.getScene().getRoot();
 
 			Timeline timeline = new Timeline();
 			KeyValue keyValue = new KeyValue(mainAnchor.opacityProperty(), 0);
@@ -113,6 +113,11 @@ public class MainController {
 
 			timeline.getKeyFrames().add(keyFrame);
 			timeline.play();
+			
+			FXMLLoader LoginPageLoader = new FXMLLoader();
+			LoginPageLoader.setLocation(getClass().getResource("/layout/LoginLayout.fxml"));
+			LoginPageLoader.getController();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("화면전환중 오류 발생");
