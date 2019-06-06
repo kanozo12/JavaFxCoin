@@ -9,6 +9,8 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -32,6 +34,8 @@ public class LoginController {
 	private AnchorPane loginPage;
 	@FXML
 	private Button btnLogin;
+	@FXML
+	private Button btnSingUp;
 
 	private boolean checkLogin() {
 		String id = txtId.getText();
@@ -76,12 +80,10 @@ public class LoginController {
 	}
 
 	public void handleBtnLogin() {
-
 		if (!checkLogin()) {
 			// lblStatus.setText("잘못된 아이디 또는 비밀번호");
 			return;
 		}
-
 		try {
 			StackPane mainPage = (StackPane) btnLogin.getScene().getRoot();
 
@@ -100,4 +102,28 @@ public class LoginController {
 			lblErrors.setText("화면전환 오류 발생");
 		}
 	}
+	
+	public void handleBtnSignUp() {
+		try {
+			Parent members = FXMLLoader.load(getClass().getResource("SingUpLayout.fxml"));
+			StackPane root = (StackPane) btnSingUp.getScene().getRoot();
+			
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(loginPage.opacityProperty(), 1);
+
+			KeyFrame keyFrame = new KeyFrame(Duration.millis(800), (ActionEvent event) -> {
+				root.getChildren().add(members);
+			}, keyValue);
+
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.play();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("화면전환중 오류 발생");
+			lblErrors.setText("화면전환 오류 발생");
+		}
+	}
+	
+	
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.SingUpController">
+<AnchorPane fx:id="SignUpPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.SingUpController">
    <children>
       <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #0C39FF;">
          <children>
@@ -33,9 +33,15 @@
       <Pane layoutX="474.0" layoutY="163.0" prefHeight="287.0" prefWidth="334.0">
          <children>
             <TextField fx:id="txtId" layoutX="30.0" layoutY="59.0" prefHeight="34.0" prefWidth="275.0" promptText="userID" />
-            <Button layoutX="30.0" layoutY="157.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="275.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
+            <Button fx:id="SignUp" layoutX="179.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleBtnSignUp" prefHeight="34.0" prefWidth="126.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
             <TextField fx:id="txtpass" layoutX="30.0" layoutY="107.0" prefHeight="34.0" prefWidth="275.0" promptText="password" />
             <TextField fx:id="name" layoutX="30.0" layoutY="14.0" prefHeight="34.0" prefWidth="275.0" promptText="username" />
+            <Button fx:id="cancel" layoutX="35.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleBtnCancel" prefHeight="34.0" prefWidth="126.0" stylesheets="@../styling/fullpackstyling.css" text="cancel" />
+            <Label fx:id="lblErrors" alignment="CENTER" layoutX="14.0" layoutY="135.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="404.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">

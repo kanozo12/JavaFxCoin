@@ -1,5 +1,8 @@
 package layout;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Map;
 
 import api.APILoader;
@@ -17,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import jdbc.JdbcUtil;
 import vo.CoinData;
 
 public class MainController {
@@ -40,6 +44,8 @@ public class MainController {
 	private ImageView dashImg;
 	@FXML
 	private ImageView home;
+	@FXML
+	private Label user;
 
 	private APILoader loader;
 
@@ -113,7 +119,7 @@ public class MainController {
 
 			timeline.getKeyFrames().add(keyFrame);
 			timeline.play();
-			
+
 			FXMLLoader LoginPageLoader = new FXMLLoader();
 			LoginPageLoader.setLocation(getClass().getResource("/layout/LoginLayout.fxml"));
 			LoginPageLoader.getController();

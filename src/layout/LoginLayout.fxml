@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.LoginController">
+<AnchorPane fx:id="loginPage" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #F7F3F2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.LoginController">
    <children>
       <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #0C39FF;">
          <children>
@@ -41,7 +41,7 @@
                   <Font name="Segoe UI" size="10.0" />
                </font>
             </Label>
-            <Button layoutX="28.0" layoutY="128.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
+            <Button fx:id="btnSingUp" layoutX="28.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleBtnSignUp" prefHeight="34.0" prefWidth="137.0" stylesheets="@../styling/fullpackstyling.css" text="Sign up" />
          </children>
       </Pane>
       <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="404.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
