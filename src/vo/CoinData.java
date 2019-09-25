@@ -5,7 +5,7 @@ public class CoinData {
 	private Double opening_price;
 	private Double average_price;
 	private Double units_traded;
-	private Double fluctate_24H;
+	private Double fluctate_rate_24H;
 	private Double closing_price;
 	private Double min_price;
 	private Double max_price;
@@ -35,12 +35,12 @@ public class CoinData {
 		this.closing_price = closing_price;
 	}
 
-	public Double getFluctate_24H() {
-		return fluctate_24H;
+	public Double getFluctate_rate_24H() {
+		return fluctate_rate_24H;
 	}
 
-	public void setFluctate_24H(Double fluctate_24h) {
-		fluctate_24H = fluctate_24h;
+	public void setFluctate_rate_24H(Double fluctate_rate_24H) {
+		this.fluctate_rate_24H = fluctate_rate_24H;
 	}
 
 	public Double getUnits_traded() {

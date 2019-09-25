@@ -57,7 +57,7 @@ public class APILoader {
 			Double closing_price = value.get("closing_price").getAsDouble();
 			Double opening_price = value.get("opening_price").getAsDouble();
 			Double units_traded = value.get("units_traded").getAsDouble();
-			Double fluctate_24H = value.get("24H_fluctate_rate").getAsDouble();
+			Double fluctate_rate_24H = value.get("fluctate_rate_24H").getAsDouble();
 			Double max_price = value.get("max_price").getAsDouble();
 			Double min_price = value.get("min_price").getAsDouble();
 
@@ -66,7 +66,7 @@ public class APILoader {
 			temp.setOpening_price(opening_price);
 			temp.setClosing_price(closing_price);
 			temp.setUnits_traded(units_traded);
-			temp.setFluctate_24H(fluctate_24H);
+			temp.setFluctate_rate_24H(fluctate_rate_24H);
 			temp.setMax_price(max_price);
 			temp.setMin_price(min_price);
 
@@ -85,7 +85,7 @@ public class APILoader {
 		CoinData eth = getCoinData("ETH");
 		System.out.println("이더리움 가격은 " + eth.getClosing_price());
 		System.out.println("이더리움 거래량은 " + eth.getUnits_traded());
-
+		System.out.println(eth.getFluctate_rate_24H());
 	}
 
 	public String loadData(String urlString) throws IOException {

@@ -22,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import jdbc.JdbcUtil;
+import jdbc.UserDAO;
 
 public class LoginController {
 	@FXML
@@ -38,37 +39,24 @@ public class LoginController {
 	private Button btnSingUp;
 
 	private boolean checkLogin() {
+		UserDAO dao = new UserDAO();
+
 		String id = txtId.getText();
 		String pw = txtPass.getText();
 
-		Connection con = JdbcUtil.getConnection();
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT * FROM coinUsers WHERE id = ? AND pass = ?";
-
 		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) { // 그 다음원소가 존재하니?
-				// 로그인 성공했다는 것
-				String name = rs.getString("name");
-				int level = rs.getInt("level");
-				System.out.println(name + "(" + level + ")님 로그인");
-				lblErrors.setTextFill(Color.GREEN);
-				lblErrors.setText("로그인 성공 ");
+			int rst = dao.loginCheck(id, pw);
+			
+			if(rst == 1) {
+				System.out.println("로그인 성공");
 				return true;
 			} else {
-				lblErrors.setTextFill(Color.RED);
-				lblErrors.setText("잘못된 아이디 또는 비밀번호입니다.");
+				System.out.println("로그인 실패");
 				return false;
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			lblErrors.setText("알수없는 오류 발생. 로그 확인");
 			return false;
 		}
 	}
@@ -102,12 +90,12 @@ public class LoginController {
 			lblErrors.setText("화면전환 오류 발생");
 		}
 	}
-	
+
 	public void handleBtnSignUp() {
 		try {
 			Parent members = FXMLLoader.load(getClass().getResource("SingUpLayout.fxml"));
 			StackPane root = (StackPane) btnSingUp.getScene().getRoot();
-			
+
 			Timeline timeline = new Timeline();
 			KeyValue keyValue = new KeyValue(loginPage.opacityProperty(), 1);
 
@@ -117,13 +105,12 @@ public class LoginController {
 
 			timeline.getKeyFrames().add(keyFrame);
 			timeline.play();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("화면전환중 오류 발생");
 			lblErrors.setText("화면전환 오류 발생");
 		}
 	}
-	
-	
+
 }

@@ -148,21 +148,21 @@ public class CoinChartController {
 
 		coinName.setText(coinData.getCoinname().toString());
 
-		if (coinData.getFluctate_24H() >= 0) {
-			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
-			coinFlu.setStyle("-fx-background-color: #f75467;");
-			coinFlu.setText("+" + coinData.getFluctate_24H() + "%");
-
-			coinPrice.setTextFill(javafx.scene.paint.Color.RED);
-			coinPrice.setText(intformat.format(coinData.getClosing_price()));
-		} else {
-			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
-			coinFlu.setStyle("-fx-background-color: #4386f9;");
-			coinFlu.setText(coinData.getFluctate_24H() + "%");
-
-			coinPrice.setTextFill(javafx.scene.paint.Color.BLUE);
-			coinPrice.setText(intformat.format(coinData.getClosing_price()));
-		}
+//		if (coinData.getFluctate_rate_24H() >= 0) {
+//			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
+//			coinFlu.setStyle("-fx-background-color: #f75467;");
+//			coinFlu.setText("+" + coinData.getFluctate_rate_24H() + "%");
+//
+//			coinPrice.setTextFill(javafx.scene.paint.Color.RED);
+//			coinPrice.setText(intformat.format(coinData.getClosing_price()));
+//		} else {
+//			coinFlu.setTextFill(javafx.scene.paint.Color.WHITE);
+//			coinFlu.setStyle("-fx-background-color: #4386f9;");
+//			coinFlu.setText(coinData.getFluctate_rate_24H() + "%");
+//
+//			coinPrice.setTextFill(javafx.scene.paint.Color.BLUE);
+//			coinPrice.setText(intformat.format(coinData.getClosing_price()));
+//		} 변동가 -> 변동률로 변경 단위 변경해야함
 
 		coinMax.setText(coinData.getMax_price() + "");
 		coinMin.setText(coinData.getMin_price() + "");
